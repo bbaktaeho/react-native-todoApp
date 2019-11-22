@@ -21,17 +21,17 @@ class App extends Component {
     // 메서드를 생성자 내 클래스에 바인딩, 클래스를 사용하고 있으면 메서드는 클래스에 자동으로 바인딩되지 않음
     // 바인딩 하는 이유는 함수가 복사될 때 this 의 관계가 모호해지기 때문에
     // 애초에 arrow function 으로 선언되었으면 bind는 필요 없음
-    this.submitTodo = this.submitTodo.bind(this);
+    /**this.submitTodo = this.submitTodo.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
-    this.setType = this.setType.bind(this);
+    this.setType = this.setType.bind(this);*/
   }
-  inputChange(inputValue) {
+  inputChange = inputValue => {
     console.log('input value: ', inputValue);
     // setState 메서드는 재 렌더링 메서드
     this.setState({inputValue});
-  }
-  submitTodo() {
+  };
+  submitTodo = () => {
     if (this.state.inputValue.match(/^\s*$/)) {
       return;
     }
@@ -45,8 +45,8 @@ class App extends Component {
     this.setState({todos: todos, inputValue: ''}, () => {
       console.log('state: ', this.state);
     });
-  }
-  toggleComplete(todoIndex) {
+  };
+  toggleComplete = todoIndex => {
     let todos = this.state.todos;
     todos.forEach(todo => {
       if (todo.todoIndex === todoIndex) {
@@ -54,19 +54,19 @@ class App extends Component {
       }
     });
     this.setState({todos: todos});
-  }
-  deleteTodo(todoIndex) {
+  };
+  deleteTodo = todoIndex => {
     let {todos} = this.state;
     todos = todos.filter(todo => {
       return todo.todoIndex !== todoIndex; // 전달 받은 todoIndex 와 다른 todoIndex 만 모아서 반환
     });
     this.setState({todos: todos}); // {todos} 로 생략 가능
-  }
-  setType(type) {
+  };
+  setType = type => {
     console.log('App.js 에서 setType 호출');
 
     this.setState({type});
-  }
+  };
 
   /**
    * 렌더링
@@ -76,6 +76,7 @@ class App extends Component {
 
     // state 를 구조분해 할당
     const {inputValue, todos, type} = this.state;
+
     return (
       <View style={styles.container}>
         {/* keyboardShouldPersistTaps 속성은 키포드가 열려 있으면 닫아서 ui 가 onPress 이벤트를 모두 처리하게 함 */}
