@@ -6,6 +6,7 @@ const TodoButton = ({onPress, complete, name}) => (
     onPress={onPress}
     underlayColor="#efefef"
     style={styles.button}>
+    {/* style 이 배열이라면 이 중 하나를 고를 수 있음. 인덱스 순서로 읽혀짐 */}
     <Text
       style={[
         styles.text,
