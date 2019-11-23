@@ -5,7 +5,7 @@ import {View, Text, StyleSheet} from 'react-native';
 // return 을 명시하지 않을 경우 {} 중괄호를 지정하면 안됨
 const Heading = () => (
   <View style={styles.header}>
-    <Text style={styles.headerText}>todos</Text>
+    <Text style={styles.headerText}>Done하자</Text>
   </View>
 );
 
@@ -13,6 +13,7 @@ const Heading = () => (
 const styles = StyleSheet.create({
   header: {
     marginTop: 80,
+    marginBottom: 10,
   },
   headerText: {
     textAlign: 'center',
